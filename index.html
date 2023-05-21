@@ -80,15 +80,20 @@
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         var innerWidth = window.innerWidth;
-        var innerHeight = window.innerHeight;
+        var innerHeight;
+        if (/Android/i.test(navigator.userAgent)) {
+          innerHeight = screen.height / window.devicePixelRatio - window.screenTop;
+        } else {
+          innerHeight = window.innerHeight;
+        }
         meta.name = 'viewport';
         meta.content = 'width=' + innerWidth + ', height=' + innerHeight + 'initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
 
-        canvas.setAttribute('width', window.innerWidth);
-        canvas.setAttribute('height', window.innerHeight);
+        canvas.setAttribute('width', innerWidth);
+        canvas.setAttribute('height', innerHeight);
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:

@@ -80,12 +80,7 @@
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         var innerWidth = window.innerWidth;
-        var innerHeight;
-        if (/Android/i.test(navigator.userAgent)) {
-          innerHeight = screen.height / window.devicePixelRatio - window.screenTop;
-        } else {
-          innerHeight = window.innerHeight;
-        }
+        var innerHeight = window.innerHeight;
         meta.name = 'viewport';
         meta.content = 'width=' + innerWidth + ', height=' + innerHeight + 'initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
